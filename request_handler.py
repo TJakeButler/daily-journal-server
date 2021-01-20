@@ -1,4 +1,4 @@
-from entries import get_all_entries
+from entries import get_all_entries, get_single_entry
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
@@ -55,11 +55,12 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         if resource == "entries":
             if id is not None:
-                response = f"{get_all_entries()}"
+                response = f"{get_single_entry(id)}"
 
             else:
                 response = f"{get_all_entries()}"
-        
+
+            
 
         self.wfile.write(response.encode())
 
